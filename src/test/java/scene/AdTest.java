@@ -1,0 +1,47 @@
+package scene;
+
+import org.testng.annotations.Test;
+
+
+/**
+ * @author wufeng
+ * @date 2021/9/30 11:19
+ */
+public class AdTest {
+
+    @Test(priority = 1)//添加广告
+    public void testAddAd() throws InterruptedException {
+        Ad.addAd();
+    }
+
+    @Test(priority = 2)//编辑广告
+    public void testEditAd() throws InterruptedException {
+        Ad.editAd();
+    }
+
+    @Test(priority = 3)//广告投入直播
+    public void testAddLive() throws InterruptedException {
+        Ad.addLive();
+    }
+
+    @Test(priority = 4)//广告删除投入直播
+    public void testDelLive() throws InterruptedException {
+        Ad.delLive();
+    }
+
+    @Test(priority = 5)//开启广告
+    public void testOpenAd() throws InterruptedException {
+        Ad.openAd();
+    }
+
+    @Test(priority = 6)//关闭广告
+    public void testCloseAd() throws InterruptedException {
+        Ad.closeAd();
+    }
+
+    @Test(priority = 7)//删除广告
+    public void testDelAd() throws InterruptedException {
+        Ad.delAd();
+    }
+
+}
