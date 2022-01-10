@@ -48,6 +48,7 @@ public class Sign extends LoginPortal {
 
             driver.findElement(By.cssSelector("button.layui-btn.layui-btn-primary")).click();//保存直播数据
             Thread.sleep(3000);
+            System.out.println("~~~ addScence() 新建直播，执行成功~~~");
 
         } else
             System.out.println("类型及状态应为1、2、3");
@@ -57,7 +58,6 @@ public class Sign extends LoginPortal {
     //新建直播，默认普通，直播中
     public static void addScence() throws InterruptedException {
         addScence(1, 2);
-        System.out.println("~~~ addScence() 新建直播，执行成功~~~");
         Thread.sleep(3000);
     }
 

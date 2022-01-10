@@ -20,10 +20,10 @@ public class MediaContentTest {
         MediaContent.publish();
     }
 
-    @Test(priority = 4)//内容删除
-    public void testDelete() throws InterruptedException {
-        MediaContent.delete();
-    }
+//    @Test(priority = 4)//内容删除
+//    public void testDelete() throws InterruptedException {
+//        MediaContent.delete();
+//    }
 
     @Test(priority = 2)//内容选签
     public void testPush() throws InterruptedException {

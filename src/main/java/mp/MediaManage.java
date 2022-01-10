@@ -197,6 +197,7 @@ public class MediaManage extends LoginPortal {
                 if (classname.contains("auto")) {//名称是否包含auto
                     classes.get(i).findElement(By.xpath("div/span")).click();//激活auto分类
                     Thread.sleep(1000);
+                    break;
                 }
             }
             return true;
