@@ -8,14 +8,14 @@
 <!--            <class name="scene.AdTest"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
-<!--    <test name="电视广播管理测试">-->
-<!--        <classes>-->
-<!--            <class name="channel.TvprogramTest"></class>-->
-<!--            <class name="channel.RadioProgramTest"></class>-->
-<!--            <class name="channel.ChoiceprogramTest"></class>-->
-<!--            <class name="channel.ProguidTest"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="电视广播管理测试">
+        <classes>
+            <class name="channel.TvprogramTest"></class>
+            <class name="channel.RadioProgramTest"></class>
+            <class name="channel.ChoiceprogramTest"></class>
+            <class name="channel.ProguidTest"></class>
+        </classes>
+    </test>
     <test name="媒体号管理测试">
         <classes>
             <class name="mp.MediaManageTest"></class>

@@ -17,8 +17,8 @@ public class CommonMethod {
     public static void getImg(WebDriver driver) throws InterruptedException {
         Thread.sleep(2000);
         driver.findElement(By.cssSelector("button.cropSet-button.cropSet-button-primary.online")).click();//上传图片-在线资源库
-        Thread.sleep(1000);
 
+        Thread.sleep(1000);
         driver.switchTo().frame("material_iframe");//切换到资源库frame进行操作
         Thread.sleep(1000);
 
@@ -44,7 +44,7 @@ public class CommonMethod {
             System.out.println("没有可用素材！");
             driver.findElement(By.cssSelector("button.mtl_btn.cancel")).click();//融媒页关闭返回
         }
-        driver.switchTo().parentFrame();//退出当前iframe
+        driver.switchTo().defaultContent();//退出当前iframe
         Thread.sleep(500);
 
         driver.findElement(By.cssSelector("button.cropSet-button.ok.save")).click();//保存图片
@@ -52,7 +52,7 @@ public class CommonMethod {
 
         if (isJudgingElement(driver, By.cssSelector("button.cropSet-button.ok.save")))
             driver.findElement(By.cssSelector("button.cropSet-button.cancel")).click();
-        Thread.sleep(500);
+        Thread.sleep(2000);
     }
 
     //本地上传图片

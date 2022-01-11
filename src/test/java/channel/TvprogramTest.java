@@ -3,14 +3,15 @@ package channel;
 import org.testng.annotations.Test;
 
 /**
+ * @name 电视管理
  * @author wufeng
  * @date 2021/12/15 9:18
  */
 public class TvprogramTest {
-    @Test(priority = 1)//创建电视频道
-    public void testCreateTV() throws InterruptedException {
-        TvProgram.createTV();
-    }
+//    @Test(priority = 1)//创建电视频道，删除有验证码，不能自动化删除，顾不做创建避免产生大量自动化数据
+//    public void testCreateTV() throws InterruptedException {
+//        TvProgram.createTV();
+//    }
 
     @Test(priority = 2)//编辑电视频道
     public void testEditTV() throws InterruptedException {
@@ -24,7 +25,6 @@ public class TvprogramTest {
 
     @Test(priority = 4)//添加节目
     public void testAddProgram() throws InterruptedException {
-        TvProgram.addProgram();
         TvProgram.addProgram();
     }
 

@@ -301,7 +301,7 @@ public class TvProgram extends LoginPortal {
                                     driver.switchTo().parentFrame();//退出当前iframe
 
                                     driver.findElement(By.className("layui-layer-btn0")).click();//点击保存视频
-                                    System.out.println("~~~ multiplexing() 上传视频，执行成功~~~");
+                                    System.out.println("~~~ addVideo() 上传视频，执行成功~~~");
                                 } else {
                                     System.out.println("没有可用视频素材！");
                                     driver.findElement(By.cssSelector("button.mtl_btn.cancel")).click();//融媒页关闭返回

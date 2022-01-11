@@ -5,14 +5,15 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 /**
+ * 广播管理
  * @author wufeng
  * @date 2021/12/17 9:40
  */
 public class RadioProgramTest {
-    @Test(priority = 1)//创建广播频道
-    public void testAddRadio() throws InterruptedException, IOException {
-        RadioProgram.createRadio();
-    }
+//    @Test(priority = 1)//创建广播频道，删除有验证码，不能自动化删除，顾不做创建避免产生大量自动化数据
+//    public void testAddRadio() throws InterruptedException, IOException {
+//        RadioProgram.createRadio();
+//    }
 
     @Test(priority = 2)//编辑广播频道
     public void testEditRadio() throws InterruptedException {
@@ -26,7 +27,6 @@ public class RadioProgramTest {
 
     @Test(priority = 4)//添加节目
     public void testAddProgram() throws InterruptedException {
-        RadioProgram.addProgram();
         RadioProgram.addProgram();
     }
 
@@ -60,8 +60,8 @@ public class RadioProgramTest {
         RadioProgram.addAudio();
     }
 
-    @Test(priority = 9)//审核视频
-    public void testPush() throws InterruptedException, IOException {
+    @Test(priority = 9)//审核音频
+    public void testPush() throws InterruptedException, IOException{
         RadioProgram.push();
     }
 

@@ -31,7 +31,7 @@ public class RadioProgram extends LoginPortal {
         CommonMethod.getImg(driver);//获取在线资源库图片
         driver.findElement(By.name("url")).sendKeys("http://rtmpcnr003.cnr.cn/live/yyzs/playlist.m3u8");//设置url
         driver.findElement(By.className("layui-layer-btn0")).click();//保存
-        System.out.println("~~~ createRadio() 创建广播频道，执行成功~~~");
+        System.out.println("~~~ createRadio() 创建广播频道，执行成功 ~~~");
         Thread.sleep(3000);
     }
 
@@ -42,11 +42,12 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化建的测试频道
+            Thread.sleep(1000);
             driver.findElement(By.cssSelector("button.fl.edit-channel.ll-btn-item.layui-btn.layui-btn-primary.layui-btn-sm")).click();//点击编辑
             Thread.sleep(500);
             driver.findElement(By.name("channelName")).sendKeys("update");//修改名称，增加update后缀
             driver.findElement(By.className("layui-layer-btn0")).click();//点击保存
-            System.out.println("~~~ editRadio() 编辑广播频道，执行成功~~~");
+            System.out.println("~~~ editRadio() 编辑广播频道，执行成功 ~~~");
         } else System.out.println("没有自动化创建的广播频道");//未找到有自动化创建的频道
         Thread.sleep(3000);
     }
@@ -74,13 +75,13 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             String title = li.findElement(By.className("ll-channel-tit")).getText();//获取频道名称
-            if (CommonMethod.isJudgingElement(driver,By.xpath(li + "/div/img[@class='offline-icon']"))) {//判断是否在线
+            if (CommonMethod.isJudgingElement(driver, By.xpath(li + "/div/img[@class='offline-icon']"))) {//判断是否在线
                 isOnline = false;//存在“offline-icon”标签则已下线
             }
             li.click();//激活自动化创建的频道
             driver.findElement(By.cssSelector("button.fl.onOrOff-channel-pd.ll-btn-item.layui-btn.layui-btn-primary.layui-btn-sm")).click();//点击上线/下线
             if (isOnline) System.out.println("~~~ turnOnOrOffRadio()， " + title + " 下线成功~~~");//原在线的则提示下线成功
-            else System.out.println("~~~ turnOnOrOffRadio()， " + title + " 上线成功~~~");//原下线的则提示上线成功
+            else System.out.println("~~~ turnOnOrOffRadio()， " + title + " 上线成功 ~~~");//原下线的则提示上线成功
 
         } else System.out.println("没有自动化创建的广播频道");
         Thread.sleep(3000);
@@ -101,9 +102,9 @@ public class RadioProgram extends LoginPortal {
             driver.findElement(By.xpath("//div[@id='addprogram']/div[5]/div/div")).click();//设置节目封面图
             Thread.sleep(2000);
             CommonMethod.getImg(driver);//获取资源库图片
-            if (CommonMethod.isJudgingElement(driver,By.className("upload-img-loading"))) Thread.sleep(2000);
+            if (CommonMethod.isJudgingElement(driver, By.className("upload-img-loading"))) Thread.sleep(2000);
             driver.findElement(By.className("layui-layer-btn0")).click();//保存
-            System.out.println("~~~ addProgram() 创建节目，执行成功~~~");
+            System.out.println("~~~ addProgram() 创建节目，执行成功 ~~~");
         } else System.out.println("没有自动化创建的广播频道");
         Thread.sleep(3000);
     }
@@ -111,11 +112,11 @@ public class RadioProgram extends LoginPortal {
     //测试频道编辑节目
     public static void editProgram() throws InterruptedException {
         WebElement li = getAutoData();//获取自动化建的测试频道
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(500);
+            Thread.sleep(1500);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
@@ -123,8 +124,9 @@ public class RadioProgram extends LoginPortal {
                 driver.findElement(By.cssSelector("button.fr.edit-program.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击编辑
                 Thread.sleep(500);
                 driver.findElement(By.name("programName")).sendKeys("update");//修改名称，增加后缀“update”
+                Thread.sleep(500);
                 driver.findElement(By.className("layui-layer-btn0")).click();//保存
-                System.out.println("~~~ editProgram() 编辑节目，执行成功~~~");
+                System.out.println("~~~ editProgram() 编辑节目，执行成功 ~~~");
             } else System.out.println("测试频道下没有节目");//没有节目
         } else System.out.println("没有自动化创建的广播频道");
         Thread.sleep(3000);
@@ -137,14 +139,14 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(500);
+            Thread.sleep(1000);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
                 pros.get(0).click();//获取第一个节目
                 driver.findElement(By.cssSelector("button.fr.del-program.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击删除节目
                 driver.findElement(By.className("layui-layer-btn0")).click();//确定删除
-                System.out.println("~~~ delProgram() 删除节目，执行成功~~~");
+                System.out.println("~~~ delProgram() 删除节目，执行成功 ~~~");
             } else System.out.println("测试频道下没有节目");
         } else System.out.println("没有自动化创建的广播频道");
         Thread.sleep(3000);
@@ -166,7 +168,7 @@ public class RadioProgram extends LoginPortal {
             if (pros.size() > 0) {
                 driver.findElement(By.cssSelector("button.fr.seeAll.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击节目展现
                 Thread.sleep(1000);
-                if (CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='ll-items drag1']/li"))) {//判断左侧已上线节目列表是否有数据
+                if (CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='ll-items drag1']/li"))) {//判断左侧已上线节目列表是否有数据
                     drag1 = driver.findElements(By.xpath("//ul[@class='ll-items drag1']/li"));
                     for (int i = 1; i < drag1.size() + 1; i++) {
                         programName = driver.findElement(By.xpath("//ul[@class='ll-items drag1']/li[1]/p")).getText();//被操作的节目名称
@@ -178,7 +180,7 @@ public class RadioProgram extends LoginPortal {
                         Thread.sleep(1000);
                     }
                 } else System.out.println("没有已上线的节目");
-                if (CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='ll-items drag2']/li"))) {//判断右侧已下线节目列表是否有数据
+                if (CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='ll-items drag2']/li"))) {//判断右侧已下线节目列表是否有数据
                     drag2 = driver.findElements(By.xpath("//ul[@class='ll-items drag2']/li"));
                     for (int i = 1; i < drag2.size() + 1; i++) {
                         programName = driver.findElement(By.xpath("//ul[@class='ll-items drag2']/li[1]/p")).getText();//被操作的节目名称
@@ -191,7 +193,7 @@ public class RadioProgram extends LoginPortal {
                     }
                 } else System.out.println("没有已下线的节目");
                 driver.findElement(By.className("layui-layer-btn0")).click();//保存
-                System.out.println("~~~showProgram()，设置精选，执行成功~~~");
+                System.out.println("~~~showProgram()，设置精选，执行成功 ~~~");
             } else System.out.println("测试频道没有节目");
         } else System.out.println("没有自动化创建的广播频道");
         Thread.sleep(3000);
@@ -204,18 +206,18 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(500);
+            Thread.sleep(1000);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
                 pros.get(0).click();//获取第一个节目
                 Thread.sleep(500);
-                if (!CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='clearfix act-cont']/li[1]/div/p/span"))) {//判断是否已被设置为精选，不存在该标签则为非精选
+                if (!CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='clearfix act-cont']/li[1]/div/p/span"))) {//判断是否已被设置为精选，不存在该标签则为非精选
                     driver.findElement(By.cssSelector("button.fr.setchoice.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击设置为精选
-                    System.out.println("~~~ setChoice() 节目设置精选，执行成功~~~");
+                    System.out.println("~~~ setChoice() 节目设置精选，执行成功 ~~~");
                 } else {//存在该标签则已为精选
                     driver.findElement(By.cssSelector("button.fr.setchoiceNo.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击取消精选
-                    System.out.println("~~~ setChoice() 节目取消精选，执行成功~~~");
+                    System.out.println("~~~ setChoice() 节目取消精选，执行成功 ~~~");
                 }
             } else System.out.println("测试频道下没有节目");
         } else System.out.println("没有自动化创建的广播频道");
@@ -229,18 +231,18 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(500);
+            Thread.sleep(1000);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
                 pros.get(0).click();//获取第一个节目
                 Thread.sleep(500);
-                if (!CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='clearfix act-cont']/li[1]/div/p[2]/span"))) {//判断是否已被停播，不存在该标签则为正常
+                if (!CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='clearfix act-cont']/li[1]/div/p[2]/span"))) {//判断是否已被停播，不存在该标签则为正常
                     driver.findElement(By.cssSelector("button.fr.closeProgram.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击停播
-                    System.out.println("~~~ closeProgram() 节目停播，执行成功~~~");
+                    System.out.println("~~~ closeProgram() 节目停播，执行成功 ~~~");
                 } else {//存在该标签则为已停播
                     driver.findElement(By.cssSelector("button.fr.closeProgramNo.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击恢复
-                    System.out.println("~~~ closeProgram() 节目恢复播放，执行成功~~~");
+                    System.out.println("~~~ closeProgram() 节目恢复播放，执行成功 ~~~");
                 }
             } else System.out.println("测试频道下没有节目");
         } else System.out.println("没有自动化创建的广播频道");
@@ -260,19 +262,36 @@ public class RadioProgram extends LoginPortal {
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
                 for (int i = 1; i < pros.size() + 1; i++) {
-                    if (!CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='clearfix act-cont']/li[" + i + "]/div/p[2]/span"))) {//获取没有停播的节目
+                    if (!CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='clearfix act-cont']/li[" + i + "]/div/p[2]/span"))) {//获取没有停播的节目
                         pros.get(i - 1).click();
                         driver.findElement(By.cssSelector("button.fr.multiplexing-btn.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击上传视频
                         Thread.sleep(1000);
 
                         for (int j = 1; j < 50; j++) {//上传视频iframe图层参数
-                            if (CommonMethod.isJudgingElement(driver,By.id("layui-layer-iframe" + j))) {//判断有效的上传视频图层的iframe名称，j是动态的
+                            if (CommonMethod.isJudgingElement(driver, By.id("layui-layer-iframe" + j))) {//判断有效的上传视频图层的iframe名称，j是动态的
                                 driver.switchTo().frame("layui-layer-iframe" + j);//切换到上传视频图层iframe页面
-                                driver.findElement(By.name("title")).sendKeys("autotest视频" + Calendar.getInstance().getTimeInMillis());//录入标题
-                                driver.findElement(By.cssSelector("input.layui-btn.base-btn-search.layui-btn-primary.btn_getSource")).click();//点击在线资源库
-                                driver.switchTo().parentFrame();//退出当前iframe
 
-                                driver.switchTo().frame("layui-layer-iframe" + (j + 1));//切换到资源库frame进行操作
+                                driver.findElement(By.name("title")).sendKeys("autotest音频" + Calendar.getInstance().getTimeInMillis());//录入标题
+
+                                driver.findElement(By.cssSelector("i.layui-icon.layui-icon-add-1")).click();
+                                Thread.sleep(1000);
+
+                                driver.switchTo().defaultContent();//退出当前iframe
+                                Thread.sleep(3000);
+
+                                CommonMethod.getImg(driver);
+//                                    CommonMethod.uploadImg(driver);
+                                Thread.sleep(2000);
+
+                                driver.switchTo().frame("layui-layer-iframe" + j);//切换到上传视频图层iframe页面
+
+                                driver.findElement(By.cssSelector("input.layui-btn.base-btn-search.layui-btn-primary.btn_getSource")).click();//点击在线资源库
+                                driver.switchTo().defaultContent();//退出当前iframe
+                                Thread.sleep(2000);
+
+                                if (CommonMethod.isJudgingElement(driver, By.id("layui-layer-iframe" + (j + 1))))
+                                    driver.switchTo().frame("layui-layer-iframe" + (j + 1));//切换到资源库frame进行操作
+                                else driver.switchTo().frame("layui-layer-iframe" + (j + 2));//切换到资源库frame进行操作
                                 Thread.sleep(1500);
 
                                 List<WebElement> audios = driver.findElements(By.xpath("//ul[@class='mtl_audioList']/li"));//获取素材数据列表
@@ -282,16 +301,7 @@ public class RadioProgram extends LoginPortal {
                                     driver.findElement(By.cssSelector("button.mtl_btn.yes")).click();//融媒页确认添加视频返回
                                     driver.switchTo().parentFrame();//退出当前iframe
                                     Thread.sleep(3000);
-
-                                    driver.switchTo().frame("layui-layer-iframe" + j);//切换到上传视频图层iframe进行操作
-
-                                    driver.findElement(By.cssSelector("i.layui-icon.layui-icon-add-1")).click();
-
-                                    driver.switchTo().defaultContent();//退出当前iframe
-                                    Thread.sleep(1000);
-
-                                    CommonMethod.uploadImg(driver);
-                                    Thread.sleep(2000);
+//
 
                                     driver.switchTo().frame("layui-layer-iframe" + j);//切换到上传视频图层iframe图层
                                     driver.findElement(By.name("summary")).sendKeys("这里是音频简介" + Calendar.getInstance().getTimeInMillis());//录入简介信息
@@ -299,7 +309,7 @@ public class RadioProgram extends LoginPortal {
 
 
                                     driver.findElement(By.className("layui-layer-btn0")).click();//点击保存视频
-                                    System.out.println("~~~ multiplexing() 上传音频，执行成功~~~");
+                                    System.out.println("~~~ addAudio() 上传音频，执行成功 ~~~");
                                 } else {
                                     System.out.println("没有可用音频素材！");
                                     driver.findElement(By.cssSelector("button.mtl_btn.cancel")).click();//融媒页关闭返回
@@ -327,7 +337,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {
             li.click();//激活要操作的频道
-            Thread.sleep(5000);
+            Thread.sleep(2000);
 
             pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
@@ -337,12 +347,12 @@ public class RadioProgram extends LoginPortal {
                         proName = driver.findElement(By.xpath("//ul[@class='clearfix act-cont']/li[" + i + "]/div/p[1]/i")).getText();
                         Thread.sleep(2000);
 
-                        if (!CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='menu-list clearfix']/li")))//判断视频列表是否有数据
+                        if (!CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='menu-list clearfix']/li")))//判断视频列表是否有数据
                             addAudio();//视频没数据则先添加数据
 
                         audios = driver.findElements(By.xpath("//ul[@class='menu-list clearfix']/li"));//获取音频列表
                         for (int j = 1; j < audios.size() + 1; j++) {
-                            if (!CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='menu-list clearfix']/li[" + j + "]/div[@class='ll-menu']/div/div/span[@class='fr ll-select isPublishColor']"))) {
+                            if (!CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='menu-list clearfix']/li[" + j + "]/div[@class='ll-menu']/div/div/span[@class='fr ll-select isPublishColor']"))) {
                                 driver.findElement(By.xpath("//ul[@class='menu-list clearfix']/li[" + j + "]/div[@class='ll-menu']/p[@class='ll-check']")).click();
                                 driver.findElement(By.cssSelector("button.fr.ispush.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();
                                 System.out.println("~~~ push() ，节目“" + proName + "”,音频审核，执行成功 ~~~");
@@ -368,7 +378,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {
             li.click();//激活要操作的频道
-            Thread.sleep(5000);
+            Thread.sleep(2000);
 
             pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
@@ -378,13 +388,13 @@ public class RadioProgram extends LoginPortal {
                         proName = driver.findElement(By.xpath("//ul[@class='clearfix act-cont']/li[" + i + "]/div/p[1]/i")).getText();
                         Thread.sleep(5000);
 
-                        if (!CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='menu-list clearfix']/li")))//判断音频列表是否有数据
+                        if (!CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='menu-list clearfix']/li")))//判断音频列表是否有数据
                             addAudio();//视频没数据则先添加数据
 
                         audios = driver.findElements(By.xpath("//ul[@class='menu-list clearfix']/li"));//获取素材数据列表
 
                         for (int j = 1; j < audios.size() + 1; j++) {
-                            if (CommonMethod.isJudgingElement(driver,By.xpath("//ul[@class='menu-list clearfix']/li[" + j + "]/div[@class='ll-menu']/div/div/span[@class='fr ll-select isPublishColor']"))) {
+                            if (CommonMethod.isJudgingElement(driver, By.xpath("//ul[@class='menu-list clearfix']/li[" + j + "]/div[@class='ll-menu']/div/div/span[@class='fr ll-select isPublishColor']"))) {
                                 driver.findElement(By.xpath("//ul[@class='menu-list clearfix']/li[" + j + "]/div[@class='ll-menu']/p[@class='ll-check']")).click();
                                 driver.findElement(By.cssSelector("button.fr.isoffline.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();
                                 System.out.println("~~~ offline() ，节目“" + proName + "”,音频下线，执行成功 ~~~");
@@ -406,7 +416,7 @@ public class RadioProgram extends LoginPortal {
         try {
             driver = login();
             for (int i = 0; i < 3; i++) {
-                if (!CommonMethod.isJudgingElement(driver,By.tagName("header"))) {
+                if (!CommonMethod.isJudgingElement(driver, By.tagName("header"))) {
                     driver.get("http://app.test.pdmiryun.com/rft/channel/radioProgram");
                     Thread.sleep(2000);
                 } else break;
