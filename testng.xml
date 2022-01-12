@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<suite name="jixianAutoTest" parallel="false">
+<suite name="jixianTest" parallel="false">
 
     <test name="直播管理测试">
         <classes>
