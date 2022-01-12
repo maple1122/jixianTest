@@ -21,6 +21,8 @@
             <class name="mp.MediaManageTest"></class>
             <class name="mp.MediaShareTest"></class>
             <class name="mp.MediaContentTest"></class>
+            <class name="mp.LiveManageTest"></class>
+            <class name="mp.PaiPaiManageTest"></class>
         </classes>
     </test>
     <listeners>

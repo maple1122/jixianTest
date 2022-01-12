@@ -42,7 +42,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化建的测试频道
-            Thread.sleep(1000);
+            Thread.sleep(1500);
             driver.findElement(By.cssSelector("button.fl.edit-channel.ll-btn-item.layui-btn.layui-btn-primary.layui-btn-sm")).click();//点击编辑
             Thread.sleep(500);
             driver.findElement(By.name("channelName")).sendKeys("update");//修改名称，增加update后缀
@@ -59,6 +59,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化建的测试频道
+            Thread.sleep(1500);
             driver.findElement(By.cssSelector("button.fl.del-channel.ll-btn-item.layui-btn.layui-btn-primary.layui-btn-sm")).click();//点击删除
             Thread.sleep(500);
             //前一步有验证码录入，顾自动化无法执行
@@ -79,6 +80,7 @@ public class RadioProgram extends LoginPortal {
                 isOnline = false;//存在“offline-icon”标签则已下线
             }
             li.click();//激活自动化创建的频道
+            Thread.sleep(1500);
             driver.findElement(By.cssSelector("button.fl.onOrOff-channel-pd.ll-btn-item.layui-btn.layui-btn-primary.layui-btn-sm")).click();//点击上线/下线
             if (isOnline) System.out.println("~~~ turnOnOrOffRadio()， " + title + " 下线成功~~~");//原在线的则提示下线成功
             else System.out.println("~~~ turnOnOrOffRadio()， " + title + " 上线成功 ~~~");//原下线的则提示上线成功
@@ -94,7 +96,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(1000);
+            Thread.sleep(1500);
             driver.findElement(By.cssSelector("button.fr.add-program.ll-btn-item.layui-btn.layui-btn-primary.ll-btn")).click();//点击添加节目
             Thread.sleep(500);
             driver.findElement(By.name("programName")).sendKeys("autotest节目" + Calendar.getInstance().getTimeInMillis());//设置节目名称
@@ -139,7 +141,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
@@ -162,7 +164,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {
             li.click();//激活自动化创建的频道
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目
             if (pros.size() > 0) {
@@ -206,7 +208,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
@@ -231,7 +233,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {//判断是否有自动化创建的频道
             li.click();//激活自动化创建的频道
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
@@ -257,7 +259,7 @@ public class RadioProgram extends LoginPortal {
 
         if (li != null) {
             li.click();//激活要操作的测试频道
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             List<WebElement> pros = driver.findElements(By.xpath("//ul[@class='clearfix act-cont']/li"));//获取节目列表
             if (pros.size() > 0) {//判断是否有节目
@@ -280,7 +282,6 @@ public class RadioProgram extends LoginPortal {
                                 Thread.sleep(3000);
 
                                 CommonMethod.getImg(driver);
-//                                    CommonMethod.uploadImg(driver);
                                 Thread.sleep(2000);
 
                                 driver.switchTo().frame("layui-layer-iframe" + j);//切换到上传视频图层iframe页面
@@ -301,7 +302,6 @@ public class RadioProgram extends LoginPortal {
                                     driver.findElement(By.cssSelector("button.mtl_btn.yes")).click();//融媒页确认添加视频返回
                                     driver.switchTo().parentFrame();//退出当前iframe
                                     Thread.sleep(3000);
-//
 
                                     driver.switchTo().frame("layui-layer-iframe" + j);//切换到上传视频图层iframe图层
                                     driver.findElement(By.name("summary")).sendKeys("这里是音频简介" + Calendar.getInstance().getTimeInMillis());//录入简介信息
