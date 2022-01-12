@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <suite name="jixianAutoTest" parallel="false">
 
-<!--    <test name="直播管理测试">-->
-<!--        <classes>-->
-<!--            <class name="scene.SignTest"></class>-->
-<!--            <class name="scene.LiveTest"></class>-->
-<!--            <class name="scene.AdTest"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="直播管理测试">
+        <classes>
+            <class name="scene.SignTest"></class>
+            <class name="scene.LiveTest"></class>
+            <class name="scene.AdTest"></class>
+        </classes>
+    </test>
     <test name="电视广播管理测试">
         <classes>
             <class name="channel.TvprogramTest"></class>
