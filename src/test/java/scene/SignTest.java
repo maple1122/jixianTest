@@ -1,6 +1,10 @@
 package scene;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.Method;
 
 
 /**
@@ -58,6 +62,17 @@ public class SignTest {
     @Test(priority = 8)//互动直播互动报道删除直播间
     public void testDelReport2() throws InterruptedException {
         Sign.delReportLive2();
+    }
+
+    @BeforeMethod
+    public void testStart(Method method) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>> Test case: "
+                + method.getName());
+    }
+
+    @AfterMethod
+    public void testEnd(Method method){
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<< Test End!\n");
     }
 
 }

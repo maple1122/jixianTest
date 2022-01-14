@@ -1,8 +1,11 @@
 package channel;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * @name 节目单管理
@@ -31,4 +34,15 @@ public class ProguidTest {
 //    public void testUpload() throws InterruptedException, IOException {
 //        Proguid.upload();
 //    }
+
+    @BeforeMethod
+    public void testStart(Method method) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>> Test case: "
+                + method.getName());
+    }
+
+    @AfterMethod
+    public void testEnd(Method method){
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<< Test End!\n");
+    }
 }

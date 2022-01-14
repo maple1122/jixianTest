@@ -1,6 +1,10 @@
 package channel;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.Method;
 
 /**
  * @name 电视管理
@@ -66,5 +70,16 @@ public class TvprogramTest {
     @Test(priority = 10)//下线视频
     public void testOffLine() throws InterruptedException {
         TvProgram.offline();
+    }
+
+    @BeforeMethod
+    public void testStart(Method method) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>> Test case: "
+                + method.getName());
+    }
+
+    @AfterMethod
+    public void testEnd(Method method){
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<< Test End!\n");
     }
 }

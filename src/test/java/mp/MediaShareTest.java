@@ -1,6 +1,10 @@
 package mp;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.Method;
 
 import static org.testng.Assert.*;
 
@@ -23,5 +27,16 @@ public class MediaShareTest {
     @Test(priority = 3)//引入媒体号-删除引入媒体号
     public void testDelIntroduce() throws InterruptedException {
         MediaShare.delIntroduce();
+    }
+
+    @BeforeMethod
+    public void testStart(Method method) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>> Test case: "
+                + method.getName());
+    }
+
+    @AfterMethod
+    public void testEnd(Method method){
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<< Test End!\n");
     }
 }

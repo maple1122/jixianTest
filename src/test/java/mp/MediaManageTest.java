@@ -1,8 +1,11 @@
 package mp;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.lang.reflect.Method;
 import java.util.Random;
 
 /**
@@ -40,5 +43,16 @@ public class MediaManageTest {
     @Test(priority = 5)//删除媒体号
     public void testDelMedia() throws InterruptedException {
         MediaManage.delMedia();
+    }
+
+    @BeforeMethod
+    public void testStart(Method method) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>> Test case: "
+                + method.getName());
+    }
+
+    @AfterMethod
+    public void testEnd(Method method){
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<< Test End!\n");
     }
 }
