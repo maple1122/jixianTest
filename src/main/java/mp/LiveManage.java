@@ -60,9 +60,10 @@ public class LiveManage extends LoginPortal {
         Thread.sleep(3000);
     }
 
-    //直播下线
+    //直播发布
     public static void publish() throws InterruptedException {
         recordList(driver);
+        Boolean hasPublish=false;
 
         for (int i = 0; i < 50; i++) {
             if (CommonMethod.isJudgingElement(driver, By.id("layui-layer-iframe" + i))) {
@@ -72,18 +73,24 @@ public class LiveManage extends LoginPortal {
         }
         Thread.sleep(1000);
         List<WebElement> lives = driver.findElements(By.xpath("//div[@class='show-content-data']/div"));
-        if (lives.size() > 0)
+        if (lives.size() > 0){
             for (int i = 0; i < lives.size(); i++) {
                 if (lives.get(i).findElement(By.xpath("div[@class='btns']/span[2]")).getAttribute("class").contains("hidden")) {
                     lives.get(i).findElement(By.xpath("div[@class='btns']/span[@class='btn btn-publish']")).click();
                     driver.findElement(By.className("layui-layer-btn0")).click();
                     Thread.sleep(500);
                     driver.findElement(By.className("lz-opt-text")).click();
+                    hasPublish=true;
                     System.out.println("~~~ publish()，发布直播，执行成功 ~~~");
                     break;
                 }
             }
+        if (!hasPublish)
+            System.out.println("没有待发布的自动化测试数据");
+        }
         else System.out.println("没有自动化可测试的数据");
+        driver.findElement(By.className("lz-opt-text")).click();
+        Thread.sleep(1000);
         driver.switchTo().defaultContent();
         Thread.sleep(3000);
     }
